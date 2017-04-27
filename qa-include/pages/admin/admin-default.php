@@ -172,7 +172,6 @@
 		'feedback_enabled' => 'checkbox',
 		'flagging_of_posts' => 'checkbox',
 		'follow_on_as' => 'checkbox',
-		'link_external_accounts' => 'checkbox',
 		'links_in_new_window' => 'checkbox',
 		'logo_show' => 'checkbox',
 		'mailing_enabled' => 'checkbox',

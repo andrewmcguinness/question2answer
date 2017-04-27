@@ -313,7 +313,7 @@
 					if (strlen(@$fields['email'])) {
 				        $emailusers=qa_db_user_find_by_email($fields['email']);
 						if (count($emailusers)) {
-					        if (qa_opt('link_external_accounts')) {
+					        if (QA_LINK_EXTERNAL_USERS) {
 							    // link the new login to the userid with the same email
 							    $userid=$emailusers[0]['userid'];
   					        } else {
