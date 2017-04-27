@@ -251,6 +251,7 @@
 			'hot_weight_q_age' => 100,
 			'hot_weight_views' => 100,
 			'hot_weight_votes' => 100,
+			'link_external_accounts' => 0,
 			'mailing_per_minute' => 500,
 			'match_ask_check_qs' => 3,
 			'match_example_tags' => 3,

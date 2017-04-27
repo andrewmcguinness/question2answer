@@ -309,17 +309,25 @@
 				} else {
 					$handle=qa_handle_make_valid(@$fields['handle']);
 
-					if (strlen(@$fields['email'])) { // remove email address if it will cause a duplicate
-						$emailusers=qa_db_user_find_by_email($fields['email']);
+					$userid=NULL;
+					if (strlen(@$fields['email'])) {
+				        $emailusers=qa_db_user_find_by_email($fields['email']);
 						if (count($emailusers)) {
-							qa_redirect('login', array('e' => $fields['email'], 'ee' => '1'));
-							unset($fields['email']);
-							unset($fields['confirmed']);
-						}
+					        if (qa_opt('link_external_accounts')) {
+							    // link the new login to the userid with the same email
+							    $userid=$emailusers[0]['userid'];
+  					        } else {
+					   	        // remove email address if it will cause a duplicate
+							    qa_redirect('login', array('e' => $fields['email'], 'ee' => '1'));
+							    unset($fields['email']);
+							    unset($fields['confirmed']);
+						    }
+					    }
 					}
 
-					$userid=qa_create_new_user((string)@$fields['email'], null /* no password */, $handle,
-						isset($fields['level']) ? $fields['level'] : QA_USER_LEVEL_BASIC, @$fields['confirmed']);
+					if (is_null($userid))
+					    $userid=qa_create_new_user((string)@$fields['email'], null /* no password */, $handle,
+						    isset($fields['level']) ? $fields['level'] : QA_USER_LEVEL_BASIC, @$fields['confirmed']);
 
 					qa_db_user_login_add($userid, $source, $identifier);
 					qa_db_user_login_sync(false);
