@@ -126,6 +126,7 @@
 */
 
 	define('QA_EXTERNAL_USERS', false);
+	define('QA_LINK_EXTERNAL_USERS', false);
 
 /*
 	Out-of-the-box WordPress 3.x integration - to integrate with your WordPress site and user
