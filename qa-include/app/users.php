@@ -350,7 +350,7 @@ if (QA_FINAL_EXTERNAL_USERS) {
 					if (count($emailusers)) {
 						if (QA_LINK_EXTERNAL_USERS) {
 							// link the new login to the userid with the same email
-							$userid=$emailusers[0]['userid'];
+							$userid=$emailusers[0];
   				        	} else {
 				   			// remove email address if it will cause a duplicate
 							qa_redirect('login', array('e' => $fields['email'], 'ee' => '1'));
